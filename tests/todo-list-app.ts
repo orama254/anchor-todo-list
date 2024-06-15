@@ -11,7 +11,7 @@ describe("todo-list-app", () => {
   it("can create a task", async () => {
     const task = anchor.web3.Keypair.generate();
     const tx = await program.methods
-      .addingTask("You are awesome")
+      .addingTask("Reject The Finance Bill 2024")
       .accounts({
         task: task.publicKey,
         systemProgram: anchor.web3.SystemProgram.programId,
@@ -27,8 +27,8 @@ describe("todo-list-app", () => {
       taskAccount.author.toBase58(),
       author.wallet.publicKey.toBase58()
     );
-    assert.equal(taskAccount.text, "You are awesome");
-    assert.equal(taskAccount.isDone, false);
+    assert.equal(taskAccount.description, "Reject The Finance Bill 2024");
+    assert.equal(taskAccount.isAchieved, false);
     assert.ok(taskAccount.createdAt);
     assert.ok(taskAccount.updatedAt);
   });
